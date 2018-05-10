@@ -168,8 +168,11 @@ then
 for FRAMEWORK in "$TARGET_APP_FRAMEWORKS_PATH/"*
 do
 
-#签名
-/usr/bin/codesign --force --sign "$EXPANDED_CODE_SIGN_IDENTITY" "$FRAMEWORK"
+    if test -f  $FRAMEWORK
+    then
+    #签名
+    /usr/bin/codesign --force --sign "$EXPANDED_CODE_SIGN_IDENTITY" "$FRAMEWORK"
+    fi
 done
 fi
 
